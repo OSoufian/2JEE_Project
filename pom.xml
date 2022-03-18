@@ -79,15 +79,6 @@
       <scope>provided</scope>
     </dependency>
 
-<!--    &lt;!&ndash; https://mvnrepository.com/artifact/org.hibernate.validator/hibernate-validator &ndash;&gt;-->
-<!--    <dependency>-->
-<!--      <groupId>org.hibernate.validator</groupId>-->
-<!--      <artifactId>hibernate-validator</artifactId>-->
-<!--      <version>8.0.0.Alpha1</version>-->
-<!--    </dependency>-->
-
-
-
     <!-- Import the JPA API, we use provided scope as the API is included in EAP -->
     <dependency>
       <groupId>jakarta.persistence</groupId>
