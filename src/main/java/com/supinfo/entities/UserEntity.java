@@ -1,14 +1,32 @@
 package com.supinfo.entities;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
+
+import java.io.Serializable;
+import java.util.Objects;
 
 @Entity
-@Table(name = "user", schema = "barter_trade", catalog = "")
-public class UserEntity {
+@Table(name = "user", schema = "barter_trade")
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@NamedQueries({@NamedQuery(name = "UserEntity.findById",
+        query = "SELECT p FROM UserEntity p WHERE p.id = :id"),
+        @NamedQuery(name = "UserEntity.findByUserName",
+                query = "SELECT p FROM UserEntity p WHERE p.username = :username"),
+        @NamedQuery(name = "UserEntity.findAll",
+                query = "SELECT p FROM UserEntity p")})
+public class UserEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id")
     private int id;
+    @Basic
+    @Column(name = "username")
+    private String username;
     @Basic
     @Column(name = "first_name")
     private String firstName;
@@ -25,54 +43,6 @@ public class UserEntity {
     @Column(name = "password")
     private String password;
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getZipCode() {
-        return zipCode;
-    }
-
-    public void setZipCode(String zipCode) {
-        this.zipCode = zipCode;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -81,11 +51,12 @@ public class UserEntity {
         UserEntity that = (UserEntity) o;
 
         if (id != that.id) return false;
-        if (firstName != null ? !firstName.equals(that.firstName) : that.firstName != null) return false;
-        if (name != null ? !name.equals(that.name) : that.name != null) return false;
-        if (email != null ? !email.equals(that.email) : that.email != null) return false;
-        if (zipCode != null ? !zipCode.equals(that.zipCode) : that.zipCode != null) return false;
-        if (password != null ? !password.equals(that.password) : that.password != null) return false;
+        if (!Objects.equals(username, that.username)) return false;
+        if (!Objects.equals(firstName, that.firstName)) return false;
+        if (!Objects.equals(name, that.name)) return false;
+        if (!Objects.equals(email, that.email)) return false;
+        if (!Objects.equals(zipCode, that.zipCode)) return false;
+        if (!Objects.equals(password, that.password)) return false;
 
         return true;
     }
@@ -93,6 +64,7 @@ public class UserEntity {
     @Override
     public int hashCode() {
         int result = id;
+        result = 31 * result + (username != null ? username.hashCode() : 0);
         result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (email != null ? email.hashCode() : 0);

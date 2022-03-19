@@ -15,10 +15,13 @@
     <h:form>
         <h:inputText a:placeholder="Nom" value="#{user.name}"/><br/>
         <h:inputText a:placeholder="Prénom" value="#{user.firstName}"/><br/>
+        <h:inputText a:placeholder="Nom d'utilisateur" value="#{user.username}"/><br/>
         <h:inputText a:placeholder="Email" value="#{user.email}"/><br/>
         <h:inputText a:placeholder="Code Postal" value="#{user.zipCode}"/><br/>
         <h:inputSecret a:placeholder="Mot de Passe" value="#{user.password}"/><br/>
-        <h:commandButton value="Se Connecter"/>
+        <input type="checkbox" name="agreeTerm" id="agreeTerm"/>
+        <label for="agreeTerm">J'ai lu et j'accepte les conditions d'utilisation</label><br/>
+        <h:commandButton value="S'insx/>
     </h:form>
 
 </body>

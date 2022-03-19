@@ -52,14 +52,23 @@
       <groupId>org.jboss.spec.javax.xml.bind</groupId>
       <artifactId>jboss-jaxb-api_2.3_spec</artifactId>
       <version>2.0.1.Final</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>1.18.22</version>
+      <scope>provided</scope>
     </dependency>
 
     <dependency>
       <groupId>org.javassist</groupId>
       <artifactId>javassist</artifactId>
       <version>3.28.0-GA</version>
+      <type>pom</type>
       <scope>provided</scope>
     </dependency>
+
     <!-- the jaxws client bom provides all dependencies needed for this quickstart client -->
     <dependency>
       <groupId>org.wildfly</groupId>
@@ -86,9 +95,11 @@
       <version>3.1.0-RC2</version>
       <scope>provided</scope>
     </dependency>
-    <!-- Bean Validation Implementation
-         Provides portable constraints such as @Email
-         Hibernate Validator is shipped in JBoss EAP -->
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-core</artifactId>
+      <version>6.0.0.CR1</version>
+    </dependency>
     <dependency>
       <groupId>org.hibernate.validator</groupId>
       <artifactId>hibernate-validator</artifactId>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+
+<head>
+    <title>Page d'Inscription</title>
+</head>
+<body>
+    <h2>S'inscrire</h2>
+    <h:form>
+        <h:inputText a:placeholder="Nom" value="#{user.name}"/><br/>
+        <h:inputText a:placeholder="Prénom" value="#{user.firstName}"/><br/>
+        <h:inputText a:placeholder="Email" value="#{user.email}"/><br/>
+        <h:inputText a:placeholder="Code Postal" value="#{user.zipCode}"/><br/>
+        <h:inputSecret a:placeholder="Mot de Passe" value="#{user.password}"/><br/>
+        <input type="checkbox" name="agreeTerm" id="agreeTerm"/>
+        <label for="agreeTerm">J'ai lu et j'accepte les conditions d'utilisation</label><br/>
+        <h:commandButton value="Se Connecter"/>
+    </h:form>
+
+</body>
+
+</html>
