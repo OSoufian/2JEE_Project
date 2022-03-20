@@ -1,9 +1,7 @@
 package com.supinfo.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -11,6 +9,8 @@ import java.util.Objects;
 @Entity
 @Table(name = "user", schema = "barter_trade")
 @Builder
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @NamedQueries({@NamedQuery(name = "UserEntity.findById",
@@ -20,8 +20,8 @@ import java.util.Objects;
         @NamedQuery(name = "UserEntity.findAll",
                 query = "SELECT p FROM UserEntity p")})
 public class UserEntity implements Serializable {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
     @Basic

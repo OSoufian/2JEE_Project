@@ -12,7 +12,7 @@
 </head>
 <body>
     <h2>S'inscrire</h2>
-    <h:form>
+    <h:form method="POST" modelAttribute="userForm">
         <h:inputText a:placeholder="Nom" value="#{user.name}"/><br/>
         <h:inputText a:placeholder="Prénom" value="#{user.firstName}"/><br/>
         <h:inputText a:placeholder="Nom d'utilisateur" value="#{user.username}"/><br/>
@@ -21,7 +21,7 @@
         <h:inputSecret a:placeholder="Mot de Passe" value="#{user.password}"/><br/>
         <input type="checkbox" name="agreeTerm" id="agreeTerm"/>
         <label for="agreeTerm">J'ai lu et j'accepte les conditions d'utilisation</label><br/>
-        <h:commandButton value="S'insx/>
+        <h:commandButton type="submit" value="S'inscrire"/>
     </h:form>
 
 </body>

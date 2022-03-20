@@ -1,9 +1,7 @@
 package com.supinfo.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.io.Serializable;
 import java.util.Arrays;
@@ -12,6 +10,8 @@ import java.util.Objects;
 @Entity
 @Table(name = "object", schema = "barter_trade")
 @Builder
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @NamedQueries({@NamedQuery(name = "ObjectEntity.findById",

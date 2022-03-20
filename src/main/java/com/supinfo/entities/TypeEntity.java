@@ -1,9 +1,7 @@
 package com.supinfo.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -11,6 +9,8 @@ import java.util.Objects;
 @Entity
 @Table(name = "type", schema = "barter_trade")
 @Builder
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class TypeEntity implements Serializable {
