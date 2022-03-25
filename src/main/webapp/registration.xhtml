@@ -20,7 +20,8 @@
     <h:inputSecret a:placeholder="Mot de Passe" value="#{user.password}"/><br/>
     <input type="checkbox" name="agreeTerm" id="agreeTerm"/>
     <label for="agreeTerm">J'ai lu et j'accepte les conditions d'utilisation</label><br/>
-    <h:commandButton type="submit" value="S'inscrire"/>
+    <h:commandButton type="submit" value="S'inscrire" action="#{user.add}"/>
+
 </h:form>
 
 </body>

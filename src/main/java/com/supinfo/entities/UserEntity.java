@@ -113,4 +113,14 @@ public class UserEntity {
         result = 31 * result + (password != null ? password.hashCode() : 0);
         return result;
     }
+
+    public String login() {
+
+        if (username.equals("OSoufian93") && password.equals("lucien23")) {
+            return "success";
+        } else
+            return "invalid";
+    }
+
+
 }
