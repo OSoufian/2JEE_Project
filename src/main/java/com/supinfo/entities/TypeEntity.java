@@ -1,19 +1,10 @@
 package com.supinfo.entities;
 
-import jakarta.persistence.*;
-import lombok.*;
-
-import java.io.Serializable;
-import java.util.Objects;
+import javax.persistence.*;
 
 @Entity
-@Table(name = "type", schema = "barter_trade")
-@Builder
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
-public class TypeEntity implements Serializable {
+@Table(name = "type", schema = "barter_trade", catalog = "")
+public class TypeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id")
@@ -21,6 +12,22 @@ public class TypeEntity implements Serializable {
     @Basic
     @Column(name = "name")
     private String name;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -30,7 +37,7 @@ public class TypeEntity implements Serializable {
         TypeEntity that = (TypeEntity) o;
 
         if (id != that.id) return false;
-        if (!Objects.equals(name, that.name)) return false;
+        if (name != null ? !name.equals(that.name) : that.name != null) return false;
 
         return true;
     }

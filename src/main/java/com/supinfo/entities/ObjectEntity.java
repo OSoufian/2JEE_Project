@@ -1,28 +1,11 @@
 package com.supinfo.entities;
 
-import jakarta.persistence.*;
-import lombok.*;
-
-import java.io.Serializable;
+import javax.persistence.*;
 import java.util.Arrays;
-import java.util.Objects;
 
 @Entity
-@Table(name = "object", schema = "barter_trade")
-@Builder
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
-@NamedQueries({@NamedQuery(name = "ObjectEntity.findById",
-        query = "SELECT p FROM ObjectEntity p WHERE p.id = :id"),
-        @NamedQuery(name = "ObjectEntity.findByName",
-                query = "SELECT p FROM ObjectEntity p WHERE p.name = :name"),
-        @NamedQuery(name = "ObjectEntity.findByDescription",
-                query = "SELECT p FROM ObjectEntity p WHERE p.description = :description"),
-        @NamedQuery(name = "ObjectEntity.findAll",
-                query = "SELECT p FROM ObjectEntity p")})
-public class ObjectEntity implements Serializable {
+@Table(name = "object", schema = "barter_trade", catalog = "")
+public class ObjectEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id")
@@ -40,6 +23,46 @@ public class ObjectEntity implements Serializable {
     @Column(name = "image")
     private byte[] image;
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -49,8 +72,8 @@ public class ObjectEntity implements Serializable {
 
         if (id != that.id) return false;
         if (price != that.price) return false;
-        if (!Objects.equals(name, that.name)) return false;
-        if (!Objects.equals(description, that.description)) return false;
+        if (name != null ? !name.equals(that.name) : that.name != null) return false;
+        if (description != null ? !description.equals(that.description) : that.description != null) return false;
         if (!Arrays.equals(image, that.image)) return false;
 
         return true;

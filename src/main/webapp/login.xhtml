@@ -3,21 +3,19 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
-
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 <head>
     <title>Page de Connexion</title>
 </head>
 <body>
-    <h2>Se Connecter</h2>
-    <h:form>
-        <h:inputText a:placeholder="Nom d'utilisateur" value="#{helloServlet.user.username}"/><br/>
-        <h:inputSecret a:placeholder="Mot de Passe" value="#{user.password}"/><br/>
-        <h:commandButton value="Se Connecter"/>
-    </h:form>
+<h2>Se Connecter</h2>
+<h:form>
+    <h:inputText a:placeholder="Nom d'utilisateur" value="#{user.username}"/><br/>
+    <h:inputSecret a:placeholder="Mot de Passe" value="#{user.password}"/><br/>
+    <h:commandButton value="Se Connecter"/>
+</h:form>
 
 </body>
-
 </html>
