@@ -14,7 +14,7 @@
 <h:form>
     <h:inputText a:placeholder="Nom d'utilisateur" value="#{user.username}"/><br/>
     <h:inputSecret a:placeholder="Mot de Passe" value="#{user.password}"/><br/>
-    <h:commandButton value="Se Connecter"/>
+    <h:commandButton value="Se Connecter" action="#{user.login}"/>
 </h:form>
 
 </body>

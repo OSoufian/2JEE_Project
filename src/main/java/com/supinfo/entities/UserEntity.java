@@ -1,6 +1,8 @@
 package com.supinfo.entities;
 
+import javax.inject.Named;
 import javax.persistence.*;
+
 
 @Entity
 @Table(name = "user", schema = "barter_trade", catalog = "")
@@ -27,6 +29,8 @@ public class UserEntity {
     @Basic
     @Column(name = "password")
     private String password;
+
+    public void UserEntity() {}
 
     public int getId() {
         return id;
