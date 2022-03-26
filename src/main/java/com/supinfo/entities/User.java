@@ -1,5 +1,7 @@
 package com.supinfo.entities;
 
+import com.supinfo.datasource.MyDataSource;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
@@ -8,6 +10,7 @@ import javax.faces.bean.RequestScoped;
 public class User {
     private String username;
     private String password;
+    private MyDataSource datasource = new MyDataSource();
 
     public User() {}
 
@@ -29,9 +32,6 @@ public class User {
 
     public String login() {
 
-        if (username.equals("OSoufian93") && password.equals("p")) {
-            return "success";
-        } else
-            return "invalid";
+        return datasource.userLogin(username, password);
     }
 }
