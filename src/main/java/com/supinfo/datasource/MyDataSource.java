@@ -1,44 +1,52 @@
 package com.supinfo.datasource;
 
-import com.supinfo.entities.User;
-
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 import javax.sql.DataSource;
 import java.sql.*;
 
 public class MyDataSource {
-    private String dbPassword;
-    private String dbName;
-    private DataSource ds;
+    private String queryName;
+    private String queryPassword;
+    private DataSource dataSource;
 
-    public MyDataSource() {}
-
-    public String getDbPassword() {
-        return dbPassword;
+    public MyDataSource() {
+        try {
+            Context contexte = new InitialContext();
+            dataSource = (DataSource) contexte.lookup("java:/barter_trade");
+        } catch (NamingException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void setDbPassword(String dbPassword) {
-        this.dbPassword = dbPassword;
+    public String getQueryPassword() {
+        return queryPassword;
     }
 
-    public String getDbName() {
-        return dbName;
+    public void setQueryPassword(String queryPassword) {
+        this.queryPassword = queryPassword;
     }
 
-    public void setDbName(String dbName) {
-        this.dbName = dbName;
+    public String getQueryName() {
+        return queryName;
+    }
+
+    public void setQueryName(String queryName) {
+        this.queryName = queryName;
     }
 
     public DataSource getDs() {
-        return ds;
+        return dataSource;
     }
 
-    public void setDs(DataSource ds) {
-        this.ds = ds;
+    public void setDs(DataSource dataSource) {
+        this.dataSource = dataSource;
     }
 
     public String userLogin(String username, String password) {
         if (username != null) checkUserQuery(username);
-        if (username.equals(dbName) && password.equals(dbPassword))
+        if (username.equals(queryName) && password.equals(queryPassword))
             return "success";
         else
             return "invalid";
@@ -47,17 +55,17 @@ public class MyDataSource {
     public void checkUserQuery(String username) {
         Connection con = null;
 
-        if (ds != null) {
+        if (dataSource != null) {
             try {
-                con = ds.getConnection();
+                con = dataSource.getConnection();
                 if (con != null) {
-                    String sql = "select username, password from user where username = '"
+                    String sql = "SELECT username, password FROM user WHERE username = '"
                             + username + "'";
                     PreparedStatement ps = con.prepareStatement(sql);
                     ResultSet rs = ps.executeQuery();
                     rs.next();
-                    dbName = rs.getString("firstname");
-                    dbPassword = rs.getString("password");
+                    queryName = rs.getString("username");
+                    queryPassword = rs.getString("password");
                 }
             } catch (SQLException sqle) {
                 sqle.printStackTrace();

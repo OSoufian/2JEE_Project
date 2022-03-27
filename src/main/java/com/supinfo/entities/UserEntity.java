@@ -1,8 +1,6 @@
 package com.supinfo.entities;
 
-import javax.inject.Named;
 import javax.persistence.*;
-
 
 @Entity
 @Table(name = "user", schema = "barter_trade", catalog = "")
@@ -29,8 +27,6 @@ public class UserEntity {
     @Basic
     @Column(name = "password")
     private String password;
-
-    public void UserEntity() {}
 
     public int getId() {
         return id;
@@ -117,14 +113,4 @@ public class UserEntity {
         result = 31 * result + (password != null ? password.hashCode() : 0);
         return result;
     }
-
-    public String login() {
-
-        if (username.equals("OSoufian93") && password.equals("lucien23")) {
-            return "success";
-        } else
-            return "invalid";
-    }
-
-
 }
