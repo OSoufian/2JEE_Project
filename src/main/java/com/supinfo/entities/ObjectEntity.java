@@ -1,10 +1,20 @@
 package com.supinfo.entities;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.util.Arrays;
+import java.util.Objects;
 
 @Entity
-@Table(name = "object", schema = "barter_trade", catalog = "")
+@Table(name = "object", schema = "barter_trade")
+@NamedQueries({
+        @NamedQuery(name = "Obj.findAll", query = "SELECT o from ObjectEntity o"),
+        @NamedQuery(name = "Obj.findByName", query = "SELECT o from ObjectEntity o where o.name LIKE :name")
+})
+@Getter
+@Setter
 public class ObjectEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
@@ -23,46 +33,6 @@ public class ObjectEntity {
     @Column(name = "image")
     private byte[] image;
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
-    }
-
-    public byte[] getImage() {
-        return image;
-    }
-
-    public void setImage(byte[] image) {
-        this.image = image;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -72,8 +42,8 @@ public class ObjectEntity {
 
         if (id != that.id) return false;
         if (price != that.price) return false;
-        if (name != null ? !name.equals(that.name) : that.name != null) return false;
-        if (description != null ? !description.equals(that.description) : that.description != null) return false;
+        if (!Objects.equals(name, that.name)) return false;
+        if (!Objects.equals(description, that.description)) return false;
         if (!Arrays.equals(image, that.image)) return false;
 
         return true;

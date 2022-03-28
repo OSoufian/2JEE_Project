@@ -1,9 +1,19 @@
 package com.supinfo.entities;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
-@Table(name = "type", schema = "barter_trade", catalog = "")
+@Table(name = "type", schema = "barter_trade")
+@NamedQueries({
+        @NamedQuery(name = "type.findAll", query = "SELECT o from TypeEntity o"),
+        @NamedQuery(name = "type.findByName", query = "SELECT o from TypeEntity o where o.name LIKE :name")
+})
+@Getter
+@Setter
 public class TypeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
@@ -13,22 +23,6 @@ public class TypeEntity {
     @Column(name = "name")
     private String name;
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -37,7 +31,7 @@ public class TypeEntity {
         TypeEntity that = (TypeEntity) o;
 
         if (id != that.id) return false;
-        if (name != null ? !name.equals(that.name) : that.name != null) return false;
+        if (!Objects.equals(name, that.name)) return false;
 
         return true;
     }

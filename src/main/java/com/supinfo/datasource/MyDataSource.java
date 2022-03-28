@@ -1,5 +1,6 @@
 package com.supinfo.datasource;
 
+//import com.supinfo.entities.UserEntityDto;
 import com.supinfo.myEntities.User;
 
 import javax.naming.Context;
@@ -38,11 +39,11 @@ public class MyDataSource {
         this.queryName = queryName;
     }
 
-    public DataSource getDs() {
+    public DataSource getDataSource() {
         return dataSource;
     }
 
-    public void setDs(DataSource dataSource) {
+    public void setDataSource(DataSource dataSource) {
         this.dataSource = dataSource;
     }
 
@@ -51,7 +52,7 @@ public class MyDataSource {
         if (user.getUsername().equals(queryName) && user.getPassword().equals(queryPassword))
             return "success";
         else
-            return "invalid";
+            return "failure";
     }
 
     public void checkUserQuery(String username) {
