@@ -23,9 +23,9 @@ public class User {
     private String password;
     private MyDataSource dataSource = new MyDataSource();
 
-    public String login() {
-        return dataSource.userLogin(this);
-    }
+//    public String login() {
+//        return dataSource.userLogin(this);
+//    }
     public String register() {
         return dataSource.userRegister(this);
     }

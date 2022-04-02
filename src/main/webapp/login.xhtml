@@ -14,7 +14,7 @@
 <h:form action="LoginServlet" method="POST">
     <h:inputText a:placeholder="Nom d'utilisateur" value="#{user.username}"/><br/>
     <h:inputSecret a:placeholder="Mot de Passe" value="#{user.password}"/><br/>
-    <h:commandButton value="Se Connecter" action="#{user.login}"/><br/>
+    <h:commandButton type="submit" value="Se Connecter" action="#{user.login}"/><br/>
 </h:form>
 <p>Pas encore inscrit ? <h:outputLink value="register.xhtml">Créer un compte</h:outputLink></p>
 <p>Retourner à la <h:outputLink value="index.xhtml">page d'accueil</h:outputLink></p>

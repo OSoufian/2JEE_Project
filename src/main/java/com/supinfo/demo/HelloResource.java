@@ -1,7 +1,6 @@
 package com.supinfo.demo;
 
-import com.supinfo.DAOFactory.ObjectEntityDAO;
-import com.supinfo.entities.ObjectEntity;
+import com.supinfo.DAOFactories.ObjectEntityDAO;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;

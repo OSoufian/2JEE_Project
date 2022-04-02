@@ -47,12 +47,20 @@ public class MyDataSource {
         this.dataSource = dataSource;
     }
 
-    public String userLogin(User user) {
-        if (user.getUsername() != null) checkUserQuery(user.getUsername());
-        if (user.getUsername().equals(queryName) && user.getPassword().equals(queryPassword))
-            return "success";
+//    public String userLogin(User user) {
+//        if (user.getUsername() != null) checkUserQuery(user.getUsername());
+//        if (user.getUsername().equals(queryName) && user.getPassword().equals(queryPassword))
+//            return "success";
+//        else
+//            return "failure";
+//    }
+
+    public boolean userLogin(String username, String password) {
+        if (username != null) checkUserQuery(username);
+        if (username.equals(queryName) && password.equals(queryPassword))
+            return true;
         else
-            return "failure";
+            return false;
     }
 
     public void checkUserQuery(String username) {
