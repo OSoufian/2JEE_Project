@@ -1,9 +1,3 @@
-<%
-    if (session.getAttribute("username") == null) {
-        response.sendRedirect("login.jsp");
-    }
-%>
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -11,8 +5,15 @@
 </head>
 <body>
 
-<h1>Bienvenue sur la page index.jsp !</h1><br>
-<p><%= session.getAttribute("username") %></p>
+    <h1>Bienvenue sur SUP BARTERING !</h1>
+
+    <% if (session.getAttribute("username") != null) { %>
+        <p>User : <%= session.getAttribute("username") %></p>
+        <a href="logout.jsp">Se déconnecter</a>
+    <% } else { %>
+        <a href="login.jsp">Se connecter</a>
+        <a href="register.jsp">S'inscrire</a>
+    <% } %>
 
 </body>
 </html>

@@ -1,6 +1,7 @@
 package com.supinfo.servlets;
 
 import com.supinfo.datasource.MyDataSource;
+import com.supinfo.myEntities.User;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -21,12 +22,12 @@ public class LoginServlet extends HttpServlet {
         HttpSession session = request.getSession();
         RequestDispatcher dispatcher = null;
 
-        MyDataSource dataSource = new MyDataSource();
-        if (dataSource.userLogin(username, password)) {
+        User user = new User(username, password);
+        if (user.login()) {
             session.setAttribute("username", username);
             dispatcher = request.getRequestDispatcher("index.jsp");
         } else {
-            request.setAttribute("status", "failed");
+            session.setAttribute("status", "failed");
             dispatcher = request.getRequestDispatcher("login.jsp");
         }
 

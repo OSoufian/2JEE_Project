@@ -47,21 +47,21 @@ public class MyDataSource {
         this.dataSource = dataSource;
     }
 
-//    public String userLogin(User user) {
-//        if (user.getUsername() != null) checkUserQuery(user.getUsername());
-//        if (user.getUsername().equals(queryName) && user.getPassword().equals(queryPassword))
-//            return "success";
-//        else
-//            return "failure";
-//    }
-
-    public boolean userLogin(String username, String password) {
-        if (username != null) checkUserQuery(username);
-        if (username.equals(queryName) && password.equals(queryPassword))
+    public boolean userLogin(User user) {
+        if (user.getUsername() != null) checkUserQuery(user.getUsername());
+        if (user.getUsername().equals(queryName) && user.getPassword().equals(queryPassword))
             return true;
         else
             return false;
     }
+
+//    public boolean userLogin(String username, String password) {
+//        if (username != null) checkUserQuery(username);
+//        if (username.equals(queryName) && password.equals(queryPassword))
+//            return true;
+//        else
+//            return false;
+//    }
 
     public void checkUserQuery(String username) {
         Connection con = null;
@@ -84,7 +84,7 @@ public class MyDataSource {
         }
     }
 
-    public String userRegister(User user) {
+    public boolean userRegister(User user) {
         Connection con = null;
         PreparedStatement ps = null;
         int i = 0;
@@ -114,9 +114,9 @@ public class MyDataSource {
             }
         }
         if (i > 0)
-            return "success";
+            return true;
         else
-            return "failure";
+            return false;
 
     }
 }

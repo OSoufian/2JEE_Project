@@ -23,10 +23,24 @@ public class User {
     private String password;
     private MyDataSource dataSource = new MyDataSource();
 
-//    public String login() {
-//        return dataSource.userLogin(this);
-//    }
-    public String register() {
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+
+    public User(String username, String firstName, String name, String email, String zipCode, String password) {
+        this.username = username;
+        this.firstName = firstName;
+        this.name = name;
+        this.email = email;
+        this.zipCode = zipCode;
+        this.password = password;
+    }
+
+    public boolean login() {
+        return dataSource.userLogin(this);
+    }
+    public boolean register() {
         return dataSource.userRegister(this);
     }
 
