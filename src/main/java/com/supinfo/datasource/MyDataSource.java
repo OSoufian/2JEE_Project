@@ -8,9 +8,16 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MyDataSource {
+    private String queryId;
+    private String queryUsername;
+    private String queryFirstName;
     private String queryName;
+    private String queryEmail;
+    private String queryZipCode;
     private String queryPassword;
     private DataSource dataSource;
 
@@ -32,11 +39,11 @@ public class MyDataSource {
     }
 
     public String getQueryName() {
-        return queryName;
+        return queryUsername;
     }
 
-    public void setQueryName(String queryName) {
-        this.queryName = queryName;
+    public void setQueryName(String queryUsername) {
+        this.queryUsername = queryUsername;
     }
 
     public DataSource getDataSource() {
@@ -49,19 +56,15 @@ public class MyDataSource {
 
     public boolean userLogin(User user) {
         if (user.getUsername() != null) checkUserQuery(user.getUsername());
-        if (user.getUsername().equals(queryName) && user.getPassword().equals(queryPassword))
+        if (user.getUsername().equals(queryUsername) && user.getPassword().equals(queryPassword)) {
+            user.setFirstName(queryFirstName);
+            user.setName(queryName);
+            user.setEmail(queryEmail);
+            user.setZipCode(queryZipCode);
             return true;
-        else
+        } else
             return false;
     }
-
-//    public boolean userLogin(String username, String password) {
-//        if (username != null) checkUserQuery(username);
-//        if (username.equals(queryName) && password.equals(queryPassword))
-//            return true;
-//        else
-//            return false;
-//    }
 
     public void checkUserQuery(String username) {
         Connection con = null;
@@ -70,12 +73,16 @@ public class MyDataSource {
             try {
                 con = dataSource.getConnection();
                 if (con != null) {
-                    String sql = "SELECT username, password FROM user WHERE username = '"
+                    String sql = "SELECT * FROM user WHERE username = '"
                             + username + "'";
                     PreparedStatement ps = con.prepareStatement(sql);
                     ResultSet rs = ps.executeQuery();
                     rs.next();
-                    queryName = rs.getString("username");
+                    queryUsername = rs.getString("username");
+                    queryFirstName = rs.getString("first_name");
+                    queryName = rs.getString("name");
+                    queryEmail = rs.getString("email");
+                    queryZipCode = rs.getString("zip_code");
                     queryPassword = rs.getString("password");
                 }
             } catch (SQLException sqle) {
@@ -118,5 +125,34 @@ public class MyDataSource {
         else
             return false;
 
+    }
+
+    public List<User> getUserList() {
+        Connection con = null;
+        List<User> userList = new ArrayList<User>();
+
+        if (dataSource != null) {
+            try {
+                con = dataSource.getConnection();
+                if (con != null) {
+                    String sql = "SELECT * FROM user";
+                    PreparedStatement ps = con.prepareStatement(sql);
+                    ResultSet rs = ps.executeQuery();
+
+                    User user;
+                    while(rs.next()) {
+                        user = new User();
+                        user.setId(rs.getString("id"));
+                        user.setName(rs.getString("name"));
+                        user.setFirstName(rs.getString("first_name"));
+                        userList.add(user);
+                    }
+
+                }
+            } catch (SQLException sqle) {
+                sqle.printStackTrace();
+            }
+        }
+        return userList;
     }
 }

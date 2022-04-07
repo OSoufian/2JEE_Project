@@ -10,7 +10,7 @@
 </head>
 <body>
     <h1>Se Connecter</h1>
-    <a href="index.jsp">Retour au menu principal</a><br>
+    <a href="index.jsp">Retour au menu principal</a><br><br>
     <% if (session.getAttribute("status") != null) { %>
         <p id="errorMessage">Nom d'utilisateur ou mot de passe incorrect !</p>
     <% } %>

@@ -15,6 +15,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 public class User {
+    private String Id;
     private String username;
     private String firstName;
     private String name;
