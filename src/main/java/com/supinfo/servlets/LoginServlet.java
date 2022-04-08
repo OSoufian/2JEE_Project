@@ -32,7 +32,6 @@ public class LoginServlet extends HttpServlet {
             session.setAttribute("zipCode", user.getZipCode());
             session.setAttribute("password", password);
 
-
             session.setAttribute("userList", dataSource.getUserList());
 
 

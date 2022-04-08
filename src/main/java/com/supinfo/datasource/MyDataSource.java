@@ -129,7 +129,7 @@ public class MyDataSource {
 
     public List<User> getUserList() {
         Connection con = null;
-        List<User> userList = new ArrayList<User>();
+        List<User> userList = new ArrayList<>();
 
         if (dataSource != null) {
             try {
