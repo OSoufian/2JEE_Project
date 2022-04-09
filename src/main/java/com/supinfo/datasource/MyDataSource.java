@@ -159,4 +159,31 @@ public class MyDataSource {
         }
         return userObjects;
     }
+
+    public boolean userEdit(User user) {
+        Connection con = null;
+        PreparedStatement ps = null;
+//        int i = 0;
+        if (dataSource != null) {
+            try {
+                con = dataSource.getConnection();
+                if (con != null) {
+                    String sql = "UPDATE user SET username = ?, first_name = ?, name = ?, email = ?, zip_code = ? WHERE id = ?";
+                    ps = con.prepareStatement(sql);
+                    ps.setString(1, user.getUsername());
+                    ps.setString(2, user.getFirstName());
+                    ps.setString(3, user.getName());
+                    ps.setString(4, user.getEmail());
+                    ps.setString(5, user.getZipCode());
+                    ps.setString(6, user.getId());
+                    ps.executeUpdate();
+                    ps.close();
+                }
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+        }
+        return true;
+
+    }
 }

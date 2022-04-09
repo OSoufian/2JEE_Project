@@ -6,15 +6,10 @@
     <title>Title</title>
 </head>
 <body>
+<% String userId = (String)session.getAttribute("id"); %>
 
-
-<%--<c:forEach var="user" items="<%= new MyDataSource().getUserList() %>">--%>
-<%--    <c:out value="${user.firstName}"/><br>--%>
-<%--</c:forEach>--%>
-
-<c:forEach var="object" items="<%= new MyDataSource().getUserObjects((Integer)session.getAttribute("id")) %>">
+<c:forEach var="object" items="<%= new MyDataSource().getUserObjects(userId) %>">
     <c:out value="${object.name}"/>
 </c:forEach>
-
 </body>
 </html>

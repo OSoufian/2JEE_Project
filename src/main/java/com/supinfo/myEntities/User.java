@@ -37,11 +37,26 @@ public class User {
         this.password = password;
     }
 
+    public User(String id, String username, String firstName, String name, String email, String zipCode, String password) {
+        this.id = id;
+        this.username = username;
+        this.firstName = firstName;
+        this.name = name;
+        this.email = email;
+        this.zipCode = zipCode;
+        this.password = password;
+    }
+
     public boolean login() {
         return dataSource.userLogin(this);
     }
+
     public boolean register() {
         return dataSource.userRegister(this);
+    }
+
+    public boolean edit() {
+        return dataSource.userEdit(this);
     }
 
 }

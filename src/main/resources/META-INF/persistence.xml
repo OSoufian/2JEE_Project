@@ -10,7 +10,6 @@
         <class>com.supinfo.entities.ObjectEntity</class>
         <class>com.supinfo.entities.TypeEntity</class>
         <class>com.supinfo.entities.UserEntity</class>
-        <class>com.supinfo.entities.ObjectTypeEntity</class>
 
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>

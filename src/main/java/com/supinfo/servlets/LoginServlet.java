@@ -23,7 +23,6 @@ public class LoginServlet extends HttpServlet {
         RequestDispatcher dispatcher = null;
 
         User user = new User(username, password);
-        MyDataSource dataSource = new MyDataSource();
         if (user.login()) {
             session.setAttribute("username", username);
             session.setAttribute("id", user.getId());
@@ -32,8 +31,6 @@ public class LoginServlet extends HttpServlet {
             session.setAttribute("email", user.getEmail());
             session.setAttribute("zipCode", user.getZipCode());
             session.setAttribute("password", password);
-
-
             dispatcher = request.getRequestDispatcher("index.jsp");
         } else {
             session.setAttribute("status", "failed");
