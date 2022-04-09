@@ -7,7 +7,6 @@ import lombok.Setter;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import javax.persistence.*;
 
 @ManagedBean(name = "user")
 @RequestScoped
@@ -15,7 +14,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 public class User {
-    private String Id;
+    private String id;
     private String username;
     private String firstName;
     private String name;

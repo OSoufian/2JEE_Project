@@ -1,6 +1,7 @@
 package com.supinfo.datasource;
 
 //import com.supinfo.entities.UserEntityDto;
+import com.supinfo.myEntities.Object;
 import com.supinfo.myEntities.User;
 
 import javax.naming.Context;
@@ -57,6 +58,7 @@ public class MyDataSource {
     public boolean userLogin(User user) {
         if (user.getUsername() != null) checkUserQuery(user.getUsername());
         if (user.getUsername().equals(queryUsername) && user.getPassword().equals(queryPassword)) {
+            user.setId(queryId);
             user.setFirstName(queryFirstName);
             user.setName(queryName);
             user.setEmail(queryEmail);
@@ -78,6 +80,7 @@ public class MyDataSource {
                     PreparedStatement ps = con.prepareStatement(sql);
                     ResultSet rs = ps.executeQuery();
                     rs.next();
+                    queryId = rs.getString("id");
                     queryUsername = rs.getString("username");
                     queryFirstName = rs.getString("first_name");
                     queryName = rs.getString("name");
@@ -127,25 +130,26 @@ public class MyDataSource {
 
     }
 
-    public List<User> getUserList() {
+    public List<Object> getUserObjects(String userId) {
         Connection con = null;
-        List<User> userList = new ArrayList<>();
+        List<Object> userObjects = new ArrayList<>();
 
         if (dataSource != null) {
             try {
                 con = dataSource.getConnection();
                 if (con != null) {
-                    String sql = "SELECT * FROM user";
+                    String sql = "SELECT * FROM object WHERE user_id = "
+                            + userId;
                     PreparedStatement ps = con.prepareStatement(sql);
                     ResultSet rs = ps.executeQuery();
 
-                    User user;
+                    Object object;
                     while(rs.next()) {
-                        user = new User();
-                        user.setId(rs.getString("id"));
-                        user.setName(rs.getString("name"));
-                        user.setFirstName(rs.getString("first_name"));
-                        userList.add(user);
+                        object = new Object();
+                        object.setName(rs.getString("name"));
+                        object.setDescription(rs.getString("description"));
+                        object.setPrice(rs.getString("price"));
+                        userObjects.add(object);
                     }
 
                 }
@@ -153,6 +157,6 @@ public class MyDataSource {
                 sqle.printStackTrace();
             }
         }
-        return userList;
+        return userObjects;
     }
 }

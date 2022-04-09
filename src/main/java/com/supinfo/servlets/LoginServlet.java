@@ -26,13 +26,12 @@ public class LoginServlet extends HttpServlet {
         MyDataSource dataSource = new MyDataSource();
         if (user.login()) {
             session.setAttribute("username", username);
+            session.setAttribute("id", user.getId());
             session.setAttribute("firstName", user.getFirstName());
             session.setAttribute("name", user.getName());
             session.setAttribute("email", user.getEmail());
             session.setAttribute("zipCode", user.getZipCode());
             session.setAttribute("password", password);
-
-            session.setAttribute("userList", dataSource.getUserList());
 
 
             dispatcher = request.getRequestDispatcher("index.jsp");
