@@ -7,9 +7,11 @@ import com.supinfo.myEntities.User;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
+import javax.servlet.http.Part;
 import javax.sql.DataSource;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 
 public class MyDataSource {
@@ -146,9 +148,12 @@ public class MyDataSource {
                     Object object;
                     while(rs.next()) {
                         object = new Object();
+                        byte[] imgData = rs.getBytes("image");
+                        String encode = Base64.getEncoder().encodeToString(imgData);
                         object.setName(rs.getString("name"));
                         object.setDescription(rs.getString("description"));
                         object.setPrice(rs.getString("price"));
+                        object.setEncode(encode);
                         userObjects.add(object);
                     }
 
@@ -184,6 +189,39 @@ public class MyDataSource {
             }
         }
         return true;
+    }
 
+    public boolean addObject(Object object, Part part) {
+        Connection con = null;
+        PreparedStatement ps = null;
+        int i = 0;
+        if (dataSource != null) {
+            try {
+                con = dataSource.getConnection();
+                if (con != null) {
+                    String sql = "INSERT INTO object(user_id, name, description, price, image) VALUES(?,?,?,?,?)";
+                    ps = con.prepareStatement(sql);
+                    ps.setString(1, "1");
+                    ps.setString(2, object.getName());
+                    ps.setString(3, object.getDescription());
+                    ps.setString(4, object.getPrice());
+                    ps.setBlob(5, part.getInputStream());
+                    i = ps.executeUpdate();
+                }
+            } catch (Exception e) {
+                System.out.println(e);
+            } finally {
+                try {
+                    con.close();
+                    ps.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        if (i > 0)
+            return true;
+        else
+            return false;
     }
 }
