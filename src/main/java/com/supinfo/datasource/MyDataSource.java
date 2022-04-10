@@ -201,7 +201,7 @@ public class MyDataSource {
                 if (con != null) {
                     String sql = "INSERT INTO object(user_id, name, description, price, image) VALUES(?,?,?,?,?)";
                     ps = con.prepareStatement(sql);
-                    ps.setString(1, "1");
+                    ps.setString(1, object.getUser().getId());
                     ps.setString(2, object.getName());
                     ps.setString(3, object.getDescription());
                     ps.setString(4, object.getPrice());

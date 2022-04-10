@@ -19,12 +19,14 @@ public class Object {
     private String description;
     private String price;
     private String encode;
+    private User user;
     private MyDataSource dataSource = new MyDataSource();
 
-    public Object(String name, String description, String price) {
+    public Object(String name, String description, String price, User user) {
         this.name = name;
         this.description = description;
         this.price = price;
+        this.user = user;
     }
 
     public boolean add(Part part) {

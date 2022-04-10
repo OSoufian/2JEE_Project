@@ -31,6 +31,7 @@ public class LoginServlet extends HttpServlet {
             session.setAttribute("email", user.getEmail());
             session.setAttribute("zipCode", user.getZipCode());
             session.setAttribute("password", password);
+            session.setAttribute("user", user);
             dispatcher = request.getRequestDispatcher("index.jsp");
         } else {
             session.setAttribute("status", "failed");
