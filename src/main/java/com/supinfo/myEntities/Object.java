@@ -15,6 +15,7 @@ import javax.servlet.http.Part;
 @Getter
 @Setter
 public class Object {
+    private String id;
     private String name;
     private String description;
     private String price;
@@ -32,4 +33,6 @@ public class Object {
     public boolean add(Part part) {
         return dataSource.addObject(this, part);
     }
+
+
 }

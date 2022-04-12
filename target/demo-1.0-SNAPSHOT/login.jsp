@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Se Connecter</title>
+    <title>SUP Bartering</title>
     <style>
         #errorMessage {
             color: red;
@@ -17,7 +17,7 @@
     <form method="POST" action="login">
         <label for="username"></label><input type="text" id="username" name="username" placeholder="Nom d'utilisateur" /><br>
         <label for="password"></label><input type="password" id="password" name="password" placeholder="Mot de Passe" /><br>
-        <input type="submit" value="Se Connecter" /><br>
+        <input type="submit" value="Se Connecter"/><br>
         <p>Pas encore inscrit ? <a href="register.jsp">Créer un compte</a></p>
     </form>
 </body>

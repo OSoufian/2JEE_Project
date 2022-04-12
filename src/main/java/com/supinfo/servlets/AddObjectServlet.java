@@ -22,7 +22,7 @@ public class AddObjectServlet extends HttpServlet {
 
         HttpSession session = request.getSession();
         RequestDispatcher dispatcher = null;
-        User user = (User)session.getAttribute("user"); ;
+        User user = (User)session.getAttribute("user");
         Part part = request.getPart("image");
 
         Object object = new Object(name, description, price, user);

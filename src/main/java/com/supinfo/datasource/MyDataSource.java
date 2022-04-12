@@ -150,6 +150,7 @@ public class MyDataSource {
                         object = new Object();
                         byte[] imgData = rs.getBytes("image");
                         String encode = Base64.getEncoder().encodeToString(imgData);
+                        object.setId(rs.getString("id"));
                         object.setName(rs.getString("name"));
                         object.setDescription(rs.getString("description"));
                         object.setPrice(rs.getString("price"));
@@ -206,6 +207,36 @@ public class MyDataSource {
                     ps.setString(3, object.getDescription());
                     ps.setString(4, object.getPrice());
                     ps.setBlob(5, part.getInputStream());
+                    i = ps.executeUpdate();
+                }
+            } catch (Exception e) {
+                System.out.println(e);
+            } finally {
+                try {
+                    con.close();
+                    ps.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        if (i > 0)
+            return true;
+        else
+            return false;
+    }
+
+    public boolean deleteObject(String objectId) {
+        Connection con = null;
+        PreparedStatement ps = null;
+        int i = 0;
+        if (dataSource != null) {
+            try {
+                con = dataSource.getConnection();
+                if (con != null) {
+                    String sql = "DELETE FROM object WHERE id = ?";
+                    ps = con.prepareStatement(sql);
+                    ps.setString(1, objectId);
                     i = ps.executeUpdate();
                 }
             } catch (Exception e) {

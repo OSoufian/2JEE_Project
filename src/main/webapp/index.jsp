@@ -4,7 +4,6 @@
     <title>SUP Bartering</title>
 </head>
 <body>
-
     <h1>Bienvenue sur SUP BARTERING !</h1>
 
     <% if (session.getAttribute("username") != null) { %>
@@ -16,6 +15,5 @@
         <a href="login.jsp">Se connecter</a>
         <a href="register.jsp">S'inscrire</a>
     <% } %>
-
 </body>
 </html>
