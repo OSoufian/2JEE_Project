@@ -1,8 +1,6 @@
 package com.supinfo.servlets;
 
-import com.supinfo.datasource.MyDataSource;
-import com.supinfo.myEntities.Object;
-import com.supinfo.myEntities.User;
+import com.supinfo.DAO.ObjectEntityDAO;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -20,8 +18,8 @@ public class DeleteObjectServlet extends HttpServlet {
         HttpSession session = request.getSession();
         RequestDispatcher dispatcher = null;
 
-        MyDataSource myDataSource = new MyDataSource();
-        if (myDataSource.deleteObject(objectId)) {
+        ObjectEntityDAO objectEntityDAO = new ObjectEntityDAO();
+        if (objectEntityDAO.deleteObject(objectId)) {
             dispatcher = request.getRequestDispatcher("objects.jsp");
         } else {
             session.setAttribute("status", "failed");

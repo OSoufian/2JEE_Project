@@ -1,6 +1,6 @@
 package com.supinfo.servlets;
 
-import com.supinfo.myEntities.User;
+import com.supinfo.Dto.UserEntityDto;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -25,7 +25,7 @@ public class RegistrationServlet extends HttpServlet {
         HttpSession session = request.getSession();
         RequestDispatcher dispatcher = null;
 
-        User user = new User(username, firstName, name, email, zipCode, password);
+        UserEntityDto user = new UserEntityDto(username, firstName, name, email, zipCode, password);
         if (user.register()) {
             session.setAttribute("username", username);
             dispatcher = request.getRequestDispatcher("registerSuccess.jsp");

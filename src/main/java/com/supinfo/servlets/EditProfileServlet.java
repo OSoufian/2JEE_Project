@@ -1,6 +1,6 @@
 package com.supinfo.servlets;
 
-import com.supinfo.myEntities.User;
+import com.supinfo.Dto.UserEntityDto;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -27,7 +27,7 @@ public class EditProfileServlet extends HttpServlet {
 
         RequestDispatcher dispatcher = null;
 
-        User user = new User(id, username, firstName, name, email, zipCode, password);
+        UserEntityDto user = new UserEntityDto(id, username, firstName, name, email, zipCode, password);
         if (user.edit()) {
             dispatcher = request.getRequestDispatcher("editProfileSuccess.jsp");
         } else {

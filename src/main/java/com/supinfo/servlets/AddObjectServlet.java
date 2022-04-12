@@ -1,7 +1,7 @@
 package com.supinfo.servlets;
 
-import com.supinfo.myEntities.Object;
-import com.supinfo.myEntities.User;
+import com.supinfo.Dto.ObjectEntityDto;
+import com.supinfo.Dto.UserEntityDto;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -22,10 +22,10 @@ public class AddObjectServlet extends HttpServlet {
 
         HttpSession session = request.getSession();
         RequestDispatcher dispatcher = null;
-        User user = (User)session.getAttribute("user");
+        UserEntityDto user = (UserEntityDto) session.getAttribute("user"); ;
         Part part = request.getPart("image");
 
-        Object object = new Object(name, description, price, user);
+        ObjectEntityDto object = new ObjectEntityDto(name, description, price, user);
         if (object.add(part)) {
             dispatcher = request.getRequestDispatcher("addObjectSuccess.jsp");
         } else {

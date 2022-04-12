@@ -2,7 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>SUP Bartering</title>
+    <title>S'inscrire</title>
 </head>
 <body>
     <h1>Votre profil</h1>

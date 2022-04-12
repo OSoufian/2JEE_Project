@@ -9,9 +9,10 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "object", schema = "barter_trade")
-@NamedQueries({
+@NamedQueries(value = {
         @NamedQuery(name = "Obj.findAll", query = "SELECT o from ObjectEntity o"),
-        @NamedQuery(name = "Obj.findByName", query = "SELECT o from ObjectEntity o where o.name LIKE :name")
+        @NamedQuery(name = "Obj.findByNameDesPri", query = "SELECT o from ObjectEntity o where o.name LIKE :name " +
+                "OR o.description LIKE :description OR o.price = :price group by o.id")
 })
 @Getter
 @Setter

@@ -1,7 +1,7 @@
 package com.supinfo.servlets;
 
-import com.supinfo.datasource.MyDataSource;
-import com.supinfo.myEntities.User;
+import com.supinfo.DAO.UserEntityDAO;
+import com.supinfo.Dto.UserEntityDto;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -22,7 +22,9 @@ public class LoginServlet extends HttpServlet {
         HttpSession session = request.getSession();
         RequestDispatcher dispatcher = null;
 
-        User user = new User(username, password);
+        UserEntityDto user = new UserEntityDto(username, password);
+        UserEntityDAO dataSource = new UserEntityDAO();
+
         if (user.login()) {
             session.setAttribute("username", username);
             session.setAttribute("id", user.getId());
@@ -32,6 +34,7 @@ public class LoginServlet extends HttpServlet {
             session.setAttribute("zipCode", user.getZipCode());
             session.setAttribute("password", password);
             session.setAttribute("user", user);
+
             dispatcher = request.getRequestDispatcher("index.jsp");
         } else {
             session.setAttribute("status", "failed");
@@ -40,14 +43,4 @@ public class LoginServlet extends HttpServlet {
 
         dispatcher.forward(request, response);
     }
-//    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-//            throws ServletException, IOException {
-//        PrintWriter out = response.getWriter();
-//        out.print("Get");
-////        if (session != null) {
-////            String username = (String) session.getAttribute("username");
-////            out.print(username);
-////        } else out.print("Pas de session !");
-////        out.close();
-//    }
 }
