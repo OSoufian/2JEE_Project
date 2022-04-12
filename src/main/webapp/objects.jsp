@@ -1,10 +1,10 @@
 <%@ page import="com.supinfo.DAO.ObjectEntityDAO" %>
-<%@ page import="java.io.OutputStream" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>SUP Bartering</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <% String userId = (String)session.getAttribute("id"); %>

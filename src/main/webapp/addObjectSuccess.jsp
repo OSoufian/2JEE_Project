@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>SUP Bartering</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <p>Ton objet a été ajouté avec succès !</p>

@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>SUP Bartering</title>
+    <link rel="stylesheet" href="style.css">
     <style>
         #errorMessage {
             color: red;

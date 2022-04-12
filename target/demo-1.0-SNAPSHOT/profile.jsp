@@ -1,7 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Profile</title>
+    <title>SUP Bartering</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <h1>Votre profil</h1>

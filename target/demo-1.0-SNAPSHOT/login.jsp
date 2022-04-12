@@ -2,23 +2,30 @@
 <html>
 <head>
     <title>Se Connecter</title>
-    <style>
-        #errorMessage {
-            color: red;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Se Connecter</h1>
-    <a href="index.jsp">Retour au menu principal</a><br><br>
-    <% if (session.getAttribute("status") != null) { %>
-        <p id="errorMessage">Nom d'utilisateur ou mot de passe incorrect !</p>
-    <% } %>
-    <form method="POST" action="login">
-        <label for="username"></label><input type="text" id="username" name="username" placeholder="Nom d'utilisateur" /><br>
-        <label for="password"></label><input type="password" id="password" name="password" placeholder="Mot de Passe" /><br>
-        <input type="submit" value="Se Connecter" /><br>
-        <p>Pas encore inscrit ? <a href="register.jsp">Créer un compte</a></p>
-    </form>
+<%--    <a href="index.jsp">Retour au menu principal</a><br><br>--%>
+    <div class="logotwo">
+        <img src="image/logo.png" alt="test" width = "300">
+    </div>
+
+<% if (session.getAttribute("status") != null) { %>
+<p class="errorMessage">Nom d'utilisateur ou mot de passe incorrect !</p>
+<% } %>
+
+<form method="POST" action="login">
+    <p class="connexion"> Connexion </p>
+    <div class="form">
+        <input type="text" id="username" name="username" placeholder="Nom d'utilisateur" /><br>
+        <input type="password" id="password" name="password" placeholder="Mot de Passe" /><br>
+        <input class="submit" type="submit" value="Valider"/><br>
+        <p class="dejavu">Pas encore inscrit ? <a href="register.jsp">Créer un compte</a></p>
+    </div>
+</form>
+
+<footer>
+    <p> &copy; SUPINFO Paris </p>
+</footer>
 </body>
 </html>

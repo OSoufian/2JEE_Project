@@ -1,0 +1,245 @@
+body {
+    font-family : Carlito, sans-serif;
+    color : #1a1a1a;
+    margin : 0;
+}
+
+/* HEADER */
+header {
+    box-shadow: 0 -1px 4px 0 rgba(255, 255, 255, 0.08),0 4px 8px 0 rgba(0, 0, 0, 0.12);
+
+}
+
+.header {
+    position : relative;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1rem;
+}
+
+    .logo img{
+        margin-top: 30px;
+    }
+    h1{
+        margin : 10px;
+    }
+
+    .search{
+        margin-top: 40px;
+        position:relative;
+    }
+    .search input[type=text] {
+        width : 300px;
+        height: 30px;
+        top : 0px
+    }
+    .search input[name="search"]{
+        position : absolute;
+        float : left;
+        top : 0px;
+        background-color:rgb(16, 131, 16);
+        padding: 5px;
+    }
+
+    .subnavbar {
+        display: flex;
+        text-align: center;
+    }
+        .itemsnv{
+            margin-top: 10px;
+            padding : 20px;
+        }
+            .manage{
+                background-color: rgb(16, 131, 16);
+                color : white;
+        
+            }
+
+    .subnavbar a {
+        text-decoration: none;
+        color: black;
+    }
+
+/*--------------------------------*/
+
+/* IMAGE SOUS-TITRE */
+
+/* Le soustitre */
+.presentation {
+    position : relative;
+    justify-content: space-between;
+}
+    #ban {
+        width : 100%;
+        height : 600px;
+        filter: brightness(50%);
+    }
+
+    .sous-titre {
+        position : absolute;
+        top: 50%;
+        left: 50%;
+        color : white;
+        font-size : 30px;
+        animation-name: soustitre;
+        animation-fill-mode: forwards;
+        animation-duration: 3s;
+    }
+
+    @keyframes soustitre {
+        0% {
+            transform: translate(-90%, -50%);
+            opacity: 0;
+        }    
+        100% {
+            transform: translate(-50%, -50%);
+            opacity: 1;
+        }
+    }
+/*----------------------------------------------*/
+/* STATISTIQUES */
+    .stats{
+        display: flex;
+        justify-content: space-between;
+        text-align: center; 
+    }
+    .numstat{
+        font-size: 42px;
+        font-weight: bold;
+    }
+/*----------------------------------------------*/
+/* SEPARATION */
+    h2{
+        font-size: 30px;
+        margin-bottom: 0;
+    }
+/*----------------------------------------------*/
+
+/* PRODUIT */
+    .objectspreviews{
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: 15px;
+    }
+        .preview {
+            margin-top : 10px;
+            margin : 4px;
+            padding : 30px;
+            border-style: solid;
+            border-width: 2px;
+            border-color: #c0c0c0;
+            width : 300px;
+            box-shadow: 0 -1px 4px 0 rgba(255, 255, 255, 0.08),0 4px 8px 0 rgba(0, 0, 0, 0.12);
+        }
+        .name{
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 0;
+        }
+        .type{
+            font-weight: bold;
+        }
+
+        .price{
+            margin-top: 0;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .separation{
+            text-align: center;
+            margin-bottom: 3px;
+        }
+        button {
+            background-color: rgb(16, 131, 16);
+            color :white;
+            border: none;
+            padding: 15px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.12);
+            font-size : 20px;
+            cursor : pointer;
+            width: 100%;
+            transition: background-color .3s;
+
+        }
+        button:hover{
+            background-color: rgb(71, 206, 181);
+        }
+ /*----------------------------------------------*/
+
+ /*FOOTER*/
+    footer{
+        background-color: rgb(16, 131, 16);
+        padding-bottom: 30px;
+        color : white;
+        text-align: center;
+        font-weight: bold;
+        padding-top: 5px;
+    }
+ /*----------------------------------------------*/
+
+/*-------- CONNEXION INSCRIPTION -------*/
+
+.logotwo{
+    text-align: center;
+    margin-top: 60px;
+}
+
+.connexion{
+    text-align: center;
+    font-size: 30px ;
+    color :rgb(54, 54, 54);
+}
+
+.form{
+    border-style: solid;
+    border-width: 2px;
+    border-color: #c0c0c0;
+    box-shadow: 0 -1px 4px 0 rgba(255, 255, 255, 0.08),0 4px 8px 0 rgba(0, 0, 0, 0.12);
+    width : 500px;
+    padding : 20px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 150px;
+}
+
+.form input{
+    width: 300px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding : 12px;
+    margin-bottom : 20px;
+}
+
+.submit {
+    background-color: rgb(16, 131, 16);
+    color :white;
+    border: none;
+    padding: 15px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.12);
+    font-size : 20px;
+    cursor : pointer;
+    width: 100%;
+    transition: background-color .3s;
+}
+.submit:hover{
+    background-color: rgb(71, 206, 181);
+}
+
+.errormessage{
+    color :red;
+    padding : 6px;
+    background-color: rgb(255, 197, 197);
+}
+
+.dejavu{
+    text-align: center;
+}
+.dejavu a{
+    text-decoration: none;
+    color :rgb(16, 131, 16)
+}
+.dejavu a:hover{
+    color :rgb(76, 166, 255)
+}

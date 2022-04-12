@@ -23,7 +23,6 @@ public class LoginServlet extends HttpServlet {
         RequestDispatcher dispatcher = null;
 
         UserEntityDto user = new UserEntityDto(username, password);
-        UserEntityDAO dataSource = new UserEntityDAO();
 
         if (user.login()) {
             session.setAttribute("username", username);

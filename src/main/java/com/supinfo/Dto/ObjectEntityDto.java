@@ -1,6 +1,7 @@
 package com.supinfo.Dto;
 
 import com.supinfo.DAO.ObjectEntityDAO;
+import com.supinfo.DAO.UserEntityDAO;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -18,15 +19,20 @@ public class ObjectEntityDto implements Serializable {
     private String description;
     private String encode;
     private String price;
+    private String userId;
     private UserEntityDto user;
     private ObjectEntityDAO objectEntityDAO = new ObjectEntityDAO();
 
-    public ObjectEntityDto(String name, String description, String price, UserEntityDto user)
-    {
+
+    public ObjectEntityDto(String name, String description, String price, UserEntityDto user) {
         this.name = name;
         this.description = description;
         this.price = price;
         this.user = user;
+    }
+
+    public void setUser(String userId) {
+        this.user = new UserEntityDAO().getUserById(userId);
     }
 
     @Override

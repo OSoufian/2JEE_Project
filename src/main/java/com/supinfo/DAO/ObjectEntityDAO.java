@@ -20,15 +20,6 @@ public class ObjectEntityDAO {
     @PersistenceContext(type = PersistenceContextType.TRANSACTION)
     public EntityManager em = emf.createEntityManager();
 
-    public ObjectEntityDto findById(int id)
-    {
-        return em.find(ObjectEntityDto.class, id);
-    }
-
-    public List<ObjectEntityDto> allObjects(){
-        return em.createNamedQuery("Obj.findAll", ObjectEntityDto.class).getResultList();
-    }
-
     public List<ObjectEntityDto> getByNameDesPri(String search)
     {
         return em.createNamedQuery("Obj.findByNameDesPri", ObjectEntityDto.class)
@@ -37,9 +28,9 @@ public class ObjectEntityDAO {
                 .setParameter("price", "%"+search+"%").getResultList();
     }
 
-    public List<Object> getUserObjects(String userId) {
+    public List<ObjectEntityDto> getUserObjects(String userId) {
         Connection con = null;
-        List<Object> userObjects = new ArrayList<>();
+        List<ObjectEntityDto> userObjects = new ArrayList<>();
 
         try {
             con = DAOConnect.getInstance();
@@ -60,6 +51,37 @@ public class ObjectEntityDAO {
                     object.setName(rs.getString("name"));
                     object.setDescription(rs.getString("description"));
                     object.setPrice(rs.getString("price"));
+                    object.setEncode(encode);
+                    userObjects.add(object);
+                }
+            }
+        } catch (SQLException sqle) {
+            sqle.printStackTrace();
+        }
+        return userObjects;
+    }
+
+    public List<ObjectEntityDto> getAllObjects() {
+        Connection con = null;
+        List<ObjectEntityDto> userObjects = new ArrayList<>();
+
+        try {
+            con = DAOConnect.getInstance();
+            if (con != null) {
+                String sql = "SELECT * FROM object";
+                PreparedStatement ps = con.prepareStatement(sql);
+                ResultSet rs = ps.executeQuery();
+
+                ObjectEntityDto object;
+                while(rs.next()) {
+                    object = new ObjectEntityDto();
+                    byte[] imgData = rs.getBytes("image");
+                    String encode = Base64.getEncoder().encodeToString(imgData);
+                    object.setId(rs.getString("id"));
+                    object.setName(rs.getString("name"));
+                    object.setDescription(rs.getString("description"));
+                    object.setPrice(rs.getString("price"));
+                    object.setUser(rs.getString("user_id"));
                     object.setEncode(encode);
                     userObjects.add(object);
                 }
@@ -97,16 +119,16 @@ public class ObjectEntityDAO {
         PreparedStatement ps = null;
         int i = 0;
         try {
-                con = DAOConnect.getInstance();
-                if (con != null) {
-                    String sql = "DELETE FROM object WHERE id = ?";
-                    ps = con.prepareStatement(sql);
-                    ps.setString(1, objectId);
-                    i = ps.executeUpdate();
-                }
-            } catch (Exception e) {
-                System.out.println(e);
+            con = DAOConnect.getInstance();
+            if (con != null) {
+                String sql = "DELETE FROM object WHERE id = ?";
+                ps = con.prepareStatement(sql);
+                ps.setString(1, objectId);
+                i = ps.executeUpdate();
             }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
         return i > 0;
     }
 }
