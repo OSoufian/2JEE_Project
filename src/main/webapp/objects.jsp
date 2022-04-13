@@ -23,7 +23,10 @@
                         <input type="hidden" name="objectId" value="${object.id}"/><br>
                         <input type="submit" value="Supprimer" class="delete"/>
                     </form>
-                    <button type="button">VOIR</button>
+                    <form method="POST" action="objectDetails">
+                        <input type="hidden" name="objectId" value="${object.id}"/><br>
+                        <input type="submit" value="VOIR" class="submit"/>
+                    </form>
                 </div>
             </c:forEach>
                 <a href="addObject.jsp" class="plus">

@@ -1,7 +1,7 @@
 <%@ page import="com.supinfo.DAO.ObjectEntityDAO" %>
 <%@ page import="com.supinfo.Dto.ObjectEntityDto" %>
 <%@ page import="java.util.List" %>
-<%@ page import="com.supinfo.entities.ObjectEntity" %>
+<%@ page import="com.supinfo.DAO.UserEntityDAO" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -27,6 +27,7 @@
 
                 <div class="subnavbar">
                     <% if (session.getAttribute("username") != null) { %>
+                        <p><%  new UserEntityDAO().statistics(); %></p>
                         <div class="itemsnv">
                             <a href="profile.jsp">
                                 <input type="image" name="login" src="image/login.svg" alt="Logout" width = "50"/>

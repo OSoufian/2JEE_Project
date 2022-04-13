@@ -9,7 +9,6 @@ public class DAOConnect {
     private static String username = "root";
     private static String password = "";
     private static Connection connect;
-//    public CriteriaBuilder cb = em.getCriteriaBuilder();
 
     public static Connection getInstance(){
         if(connect == null){
