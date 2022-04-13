@@ -10,7 +10,7 @@
                 <img src="image/logo.png" alt="test" width = "300">
             </div>
         </a><br>
-        <h1>Votre profil</h1>
+        <h1 class="connexion">Votre profil</h1>
         <form method="POST" action="edit" class="form">
             <p class="connexion"> <%= session.getAttribute("username") %></p>
             <p>Nom : <input type="text" id="name" name="name" value="<%= session.getAttribute("name") %>"/></p>

@@ -1,4 +1,7 @@
 <%@ page import="com.supinfo.DAO.ObjectEntityDAO" %>
+<%@ page import="com.supinfo.Dto.ObjectEntityDto" %>
+<%@ page import="java.util.List" %>
+<%@ page import="com.supinfo.entities.ObjectEntity" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -9,13 +12,17 @@
     <body>
         <header>
             <div class="header">
-                <div class="logo">
-                    <img src="image/logo.png" alt="test" width = "300">
-                </div>
+                <a href="index.jsp">
+                    <div class="logo">
+                        <img src="image/logo.png" alt="test" width = "300">
+                    </div>
+                </a>
 
                 <div class="search">
-                    <input type="text" placeholder="Rechercher un produit...">
-                    <input type="image" name="search" src="image/search.svg" alt="search" width = "25"/>
+                    <form method="POST" action="searchObjects">
+                        <input type="text" name="input" placeholder="Rechercher un produit...">
+                        <input type="image" type="submit" name="search" src="image/search.svg" alt="search" width = "25"/>
+                    </form>
                 </div>
 
                 <div class="subnavbar">
@@ -28,7 +35,7 @@
                         </div>
                         <div class="itemsnv">
                             <a href="logout.jsp">
-                                <input type="image" name="login" src="image/login.svg" alt="Logout" width = "50"/>
+                                <input type="image" name="login" src="image/deconnexion.png" alt="Logout" width = "50"/>
                                 <p>Déconnexion</p>
                             </a>
                         </div>
@@ -70,13 +77,24 @@
         </div>
 
         <div class="objectspreviews">
-            <c:forEach var="object" items="<%= new ObjectEntityDAO().getAllObjects() %>">
+            <%
+                List<ObjectEntityDto> objects;
+                if (request.getAttribute("objects") == null) {
+                    objects = new ObjectEntityDAO().getAllObjects();
+                } else {
+                    objects = (List<ObjectEntityDto>) request.getAttribute("objects");
+                }
+            %>
+            <c:forEach var="object" items="<%= objects %>">
                 <div class="preview">
                     <img src="data:image/jpeg;base64,${object.encode}" width = "300"/>
                     <p class="name"> <c:out value="${object.name}"/> </p>
                     <p class="price"> <c:out value="${object.price}"/>  € </p>
                     <p>Mis en vente par : <c:out value="${object.user.username}"/> </p>
-                    <button type="button">VOIR</button>
+                    <form method="POST" action="objectDetails">
+                        <input type="hidden" name="objectId" value="${object.id}"/><br>
+                        <input type="submit" value="VOIR" class="submit"/>
+                    </form>
                 </div>
             </c:forEach>
         </div>

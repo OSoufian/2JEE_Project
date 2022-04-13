@@ -1,6 +1,5 @@
 package com.supinfo.servlets;
 
-import com.supinfo.DAO.UserEntityDAO;
 import com.supinfo.Dto.UserEntityDto;
 
 import javax.servlet.RequestDispatcher;

@@ -16,7 +16,6 @@
             </div>
         </a><br>
         <h1 class="connexion">Ajouter un objet</h1>
-        <a href="index.jsp">Retour au menu principal</a><br>
         <% if (session.getAttribute("status") != null) { %>
         <p id="errorMessage">Une erreur est survenu lors de l'ajout de l'objet. Veuillez réessayer !</p>
         <% } %>

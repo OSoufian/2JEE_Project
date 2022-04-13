@@ -1,6 +1,7 @@
 package com.supinfo.DAO;
 
 import com.supinfo.Dto.ObjectEntityDto;
+import com.supinfo.Dto.UserEntityDto;
 
 import javax.ejb.Stateless;
 import javax.persistence.*;
@@ -59,6 +60,68 @@ public class ObjectEntityDAO {
             sqle.printStackTrace();
         }
         return userObjects;
+    }
+
+    public List<ObjectEntityDto> searchObjects(String input) {
+        Connection con = null;
+        List<ObjectEntityDto> objects = new ArrayList<>();
+
+        try {
+            con = DAOConnect.getInstance();
+            if (con != null) {
+
+                String sql = "SELECT * FROM object o WHERE o.name LIKE '%"+ input +"%' OR o.description LIKE '%"+input+"%'";
+                PreparedStatement ps = con.prepareStatement(sql);
+                ResultSet rs = ps.executeQuery();
+
+                ObjectEntityDto object;
+                while(rs.next()) {
+                    object = new ObjectEntityDto();
+                    byte[] imgData = rs.getBytes("image");
+
+                    String encode = Base64.getEncoder().encodeToString(imgData);
+                    object.setId(rs.getString("id"));
+                    object.setName(rs.getString("name"));
+                    object.setDescription(rs.getString("description"));
+                    object.setPrice(rs.getString("price"));
+                    object.setUser(rs.getString("user_id"));
+                    object.setEncode(encode);
+                    objects.add(object);
+                }
+            }
+        } catch (SQLException sqle) {
+            sqle.printStackTrace();
+        }
+        return objects;
+    }
+
+    public ObjectEntityDto getObjectById(String id){
+        Connection con = null;
+        ObjectEntityDto object = new ObjectEntityDto();
+
+        try {
+            con = DAOConnect.getInstance();
+            if (con != null) {
+                String sql = "SELECT * FROM object WHERE id = " + id;
+                PreparedStatement ps = con.prepareStatement(sql);
+                ResultSet rs = ps.executeQuery();
+
+
+                while(rs.next()) {
+                    byte[] imgData = rs.getBytes("image");
+                    String encode = Base64.getEncoder().encodeToString(imgData);
+                    object.setName(rs.getString("name"));
+                    object.setDescription(rs.getString("description"));
+                    object.setPrice(rs.getString("price"));
+                    object.setUser(rs.getString("user_id"));
+                    object.setEncode(encode);
+                    ps.executeUpdate();
+                }
+            }
+        } catch (SQLException sqle) {
+            sqle.printStackTrace();
+        }
+        return object;
     }
 
     public List<ObjectEntityDto> getAllObjects() {

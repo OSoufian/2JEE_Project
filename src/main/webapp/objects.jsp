@@ -17,19 +17,18 @@
         <div class="objectspreviews">
             <c:forEach var="object" items="<%= new ObjectEntityDAO().getUserObjects(userId) %>">
                 <div class="preview">
-                    <c:out value="${object.name}"/>
                     <img width="300px" height="300px" src="data:image/jpeg;base64,${object.encode}"/>
+                    <p class="name"> <c:out value="${object.name}"/> </p>
                     <form method="POST" action="deleteObject">
                         <input type="hidden" name="objectId" value="${object.id}"/><br>
                         <input type="submit" value="Supprimer" class="delete"/>
                     </form>
+                    <button type="button">VOIR</button>
                 </div>
             </c:forEach>
-            <div class="plus">
-                <a href="addObject.jsp">
+                <a href="addObject.jsp" class="plus">
                     <img src="image/plus.png" alt="Ajouter une image"/><br>
                 </a>
-            </div>
         </div>
 
 

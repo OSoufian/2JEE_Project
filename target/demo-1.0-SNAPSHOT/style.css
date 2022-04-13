@@ -167,7 +167,7 @@ header {
         }
 
 /* PLUS */
-    .plus a{
+    .plus img{
         margin-top : 10px;
         margin : 4px;
         padding : 130px;
@@ -180,7 +180,7 @@ header {
         box-shadow: 0 -1px 4px 0 rgba(255, 255, 255, 0.08),0 4px 8px 0 rgba(0, 0, 0, 0.12);
     }
 
-    .plus a:hover{
+    .plus img:hover{
         background-color: #e9e9e9;
     }
 
