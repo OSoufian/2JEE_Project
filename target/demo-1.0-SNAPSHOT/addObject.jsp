@@ -3,11 +3,6 @@
     <head>
         <title>SUP Bartering</title>
         <link rel="stylesheet" href="style.css">
-        <style>
-            #errorMessage {
-                color: red;
-            }
-        </style>
     </head>
     <body>
         <a href="index.jsp">
@@ -16,8 +11,8 @@
             </div>
         </a><br>
         <h1 class="connexion">Ajouter un objet</h1>
-        <% if (session.getAttribute("status") != null) { %>
-        <p id="errorMessage">Une erreur est survenu lors de l'ajout de l'objet. Veuillez réessayer !</p>
+        <% if (request.getAttribute("status") != null) { %>
+            <p class="errorMessage">Une erreur est survenu lors de l'ajout de l'objet. Veuillez réessayer !</p>
         <% } %>
         <form method="POST" action="addObject" enctype="multipart/form-data" class="form">
             <input type="text" name="name" placeholder="Nom"/><br>

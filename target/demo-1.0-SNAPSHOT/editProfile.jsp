@@ -11,13 +11,16 @@
             </div>
         </a><br>
         <h1 class="connexion">Votre profil</h1>
+        <% if (request.getAttribute("status") != null) { %>
+        <p class="errorMessage">Une erreur est survenu lors de la modification. Veuillez réessayer !</p>
+        <% } %>
         <form method="POST" action="edit" class="form">
             <p class="connexion"> <%= session.getAttribute("username") %></p>
             <p>Nom : <input type="text" id="name" name="name" value="<%= session.getAttribute("name") %>"/></p>
             <p>Prénom : <input type="text" id="firstName" name="firstName" value="<%= session.getAttribute("firstName") %>"/></p>
             <p>Email : <input type="email" id="email" name="email" value="<%= session.getAttribute("email") %>"/></p>
             <p>Code postal : <input type="text" id="zipCode" name="zipCode" value="<%= session.getAttribute("zipCode") %>"/></p>
-            <input type="submit" id="edit" value="edit" class="submit"/><br>
+            <input type="submit" id="edit" value="VALIDER" class="submit"/><br>
         </form>
 
         <footer>

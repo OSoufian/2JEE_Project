@@ -23,6 +23,7 @@ public class ObjectDetailsServlet extends HttpServlet {
         request.setAttribute("price", object.getPrice());
         request.setAttribute("encode", object.getEncode());
         request.setAttribute("username", object.getUser().getUsername());
+        request.setAttribute("email", object.getUser().getEmail());
         dispatcher = request.getRequestDispatcher("objectDetails.jsp");
         dispatcher.forward(request, response);
     }

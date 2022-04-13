@@ -21,13 +21,12 @@
                 <div class="search">
                     <form method="POST" action="searchObjects">
                         <input type="text" name="input" placeholder="Rechercher un produit...">
-                        <input type="image" type="submit" name="search" src="image/search.svg" alt="search" width = "25"/>
+                        <input type="image" type="submit" name="search" src="image/search.svg" alt="search" width = "20"/>
                     </form>
                 </div>
 
                 <div class="subnavbar">
                     <% if (session.getAttribute("username") != null) { %>
-                        <p><%  new UserEntityDAO().statistics(); %></p>
                         <div class="itemsnv">
                             <a href="profile.jsp">
                                 <input type="image" name="login" src="image/login.svg" alt="Logout" width = "50"/>
@@ -69,6 +68,19 @@
             <img id=ban src="image/echange.png" alt="banniere">
             <div class=sous-titre>
                 <h2> ACHETER VENDRE ETC </h2>
+            </div>
+        </div>
+
+        <div class="stats" >
+            <div class="first">
+                <img src="image/stat.png" alt="banniere" width = "400">
+                <p>Nombre d'utilisateurs</p>
+                <p class="numstat"><% out.print(new UserEntityDAO().statistics()); %></p>
+            </div>
+            <div class="first">
+                <img src="image/stat.png" alt="banniere" width = "400">
+                <p>Nombre d'objets en vente</p>
+                <p class="numstat"><% out.print(new ObjectEntityDAO().statistics()); %></p>
             </div>
         </div>
 

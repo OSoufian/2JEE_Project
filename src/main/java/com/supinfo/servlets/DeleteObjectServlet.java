@@ -15,14 +15,11 @@ public class DeleteObjectServlet extends HttpServlet {
 
         String objectId = request.getParameter("objectId");
 
-        HttpSession session = request.getSession();
+
         RequestDispatcher dispatcher = null;
 
         ObjectEntityDAO objectEntityDAO = new ObjectEntityDAO();
         if (objectEntityDAO.deleteObject(objectId)) {
-            dispatcher = request.getRequestDispatcher("objects.jsp");
-        } else {
-            session.setAttribute("status", "failed");
             dispatcher = request.getRequestDispatcher("objects.jsp");
         }
         dispatcher.forward(request, response);

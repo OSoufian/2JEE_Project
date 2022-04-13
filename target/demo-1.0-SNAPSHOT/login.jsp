@@ -11,7 +11,7 @@
             </div>
         </a><br>
 
-        <% if (session.getAttribute("status") != null) { %>
+        <% if (request.getAttribute("status") != null) { %>
         <p class="errorMessage">Nom d'utilisateur ou mot de passe incorrect !</p>
         <% } %>
 

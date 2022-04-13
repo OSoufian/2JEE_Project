@@ -29,7 +29,7 @@ public class AddObjectServlet extends HttpServlet {
         if (object.add(part)) {
             dispatcher = request.getRequestDispatcher("addObjectSuccess.jsp");
         } else {
-            session.setAttribute("status", "failed");
+            request.setAttribute("status", "failed");
             dispatcher = request.getRequestDispatcher("addObject.jsp");
         }
         dispatcher.forward(request, response);

@@ -19,13 +19,13 @@
                 <div class="preview">
                     <img width="300px" height="300px" src="data:image/jpeg;base64,${object.encode}"/>
                     <p class="name"> <c:out value="${object.name}"/> </p>
-                    <form method="POST" action="deleteObject">
-                        <input type="hidden" name="objectId" value="${object.id}"/><br>
-                        <input type="submit" value="Supprimer" class="delete"/>
-                    </form>
                     <form method="POST" action="objectDetails">
                         <input type="hidden" name="objectId" value="${object.id}"/><br>
                         <input type="submit" value="VOIR" class="submit"/>
+                    </form>
+                    <form method="POST" action="deleteObject">
+                        <input type="hidden" name="objectId" value="${object.id}"/><br>
+                        <input type="submit" value="Supprimer" class="delete"/>
                     </form>
                 </div>
             </c:forEach>

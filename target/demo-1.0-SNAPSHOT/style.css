@@ -100,12 +100,16 @@ header {
 /* STATISTIQUES */
     .stats{
         display: flex;
-        justify-content: space-between;
+        justify-content: space-evenly;
         text-align: center; 
     }
     .numstat{
         font-size: 42px;
         font-weight: bold;
+    }
+    .first p {
+        margin: 0;
+        margin-bottom: 5px;
     }
 /*----------------------------------------------*/
 /* SEPARATION */
@@ -352,6 +356,14 @@ header {
     justify-content: space-between;
 }
 .user p {
+    margin: 0;
+}
+
+.user div {
+    text-align: right;
+}
+
+.username {
     font-size: 20px;
     font-weight: bold;
 }

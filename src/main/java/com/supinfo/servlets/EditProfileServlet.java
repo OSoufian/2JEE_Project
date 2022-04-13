@@ -31,7 +31,7 @@ public class EditProfileServlet extends HttpServlet {
         if (user.edit()) {
             dispatcher = request.getRequestDispatcher("editProfileSuccess.jsp");
         } else {
-            session.setAttribute("status", "failed");
+            request.setAttribute("status", "failed");
             dispatcher = request.getRequestDispatcher("editProfile.jsp");
         }
 

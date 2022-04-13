@@ -12,15 +12,18 @@
     </a><br>
     <div class="allinfo">
         <div class="info">
-            <img width="300px" height="300px" src="data:image/jpeg;base64, <%= request.getAttribute("encode") %>"/>
-            <p class="bigname">Nom : <%= request.getAttribute("name") %></p>
+            <img width="300px" src="data:image/jpeg;base64, <%= request.getAttribute("encode") %>"/>
+            <p class="bigname"><%= request.getAttribute("name") %></p>
             <hr>
-            <p class="bigprice">Prix : <%= request.getAttribute("price") %></p>
+            <p class="bigprice"><%= request.getAttribute("price") %> €</p>
         </div>
         <div class="buy">
             <div class="user">
                 <img src="image/login.svg" alt="test" width = "50">
-                <p><%= request.getAttribute("username") %></p>
+                <div>
+                    <p class="username"><%= request.getAttribute("username") %></p><br>
+                    <p><%= request.getAttribute("email") %></p>
+                </div>
             </div>
             <hr>
             <p><%= request.getAttribute("description") %></p>

@@ -10,7 +10,7 @@
                 <img src="image/logo.png" alt="test" width = "300">
             </div>
         </a><br>
-        <% if (session.getAttribute("status") != null) { %>
+        <% if (request.getAttribute("status") != null) { %>
             <p class="errorMessage">Une erreur est survenu lors de l'inscription. Veuillez réessayer !</p>
         <% } %>
         <form method="POST" action="register">

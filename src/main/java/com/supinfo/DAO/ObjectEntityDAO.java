@@ -169,4 +169,24 @@ public class ObjectEntityDAO {
         }
         return i > 0;
     }
+
+    public String statistics(){
+        Connection con = null;
+        String count = null;
+
+        try {
+            con = DAOConnect.getInstance();
+            String sql = "SELECT COUNT(id) FROM object";
+
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+
+            while(rs.next()) {
+                count = rs.getString("COUNT(id)");
+            }
+        } catch (SQLException sqle) {
+            sqle.printStackTrace();
+        }
+        return count;
+    }
 }
