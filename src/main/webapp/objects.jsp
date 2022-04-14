@@ -25,7 +25,7 @@
                     </form>
                     <form method="POST" action="deleteObject">
                         <input type="hidden" name="objectId" value="${object.id}"/><br>
-                        <input type="submit" value="Supprimer" class="delete"/>
+                        <input type="submit" value="Supprimer" onclick="return confirm('Voulez vous vraiment le supprimer ?')" class="delete"/>
                     </form>
                 </div>
             </c:forEach>
@@ -33,7 +33,6 @@
                     <img src="image/plus.png" alt="Ajouter une image"/><br>
                 </a>
         </div>
-
 
         <footer>
             <p> &copy; SUPINFO Paris </p>

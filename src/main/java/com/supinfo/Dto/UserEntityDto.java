@@ -81,11 +81,21 @@ public class UserEntityDto implements Serializable {
                 '}';
     }
 
-    public boolean login() { return userEntityDAO.userLogin(this); }
+    public boolean login() {
+        return userEntityDAO.userLogin(this);
+    }
+
     public boolean register() {
+        if (username == "" || firstName == "" || name == "" ||
+            email == "" || zipCode == "" || password == "")
+                return false;
         return userEntityDAO.add(this);
     }
+
     public boolean edit() {
+        if (username == "" || firstName == "" || name == "" ||
+                email == "" || zipCode == "" || password == "")
+            return false;
         return userEntityDAO.userEdit(this);
     }
 }

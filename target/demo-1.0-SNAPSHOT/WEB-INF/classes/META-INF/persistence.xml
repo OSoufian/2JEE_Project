@@ -8,7 +8,6 @@
         <jta-data-source>java:/barter_trade</jta-data-source>
 
         <class>com.supinfo.entities.ObjectEntity</class>
-        <class>com.supinfo.entities.TypeEntity</class>
         <class>com.supinfo.entities.UserEntity</class>
 
         <properties>

@@ -62,6 +62,8 @@ public class ObjectEntityDto implements Serializable {
     }
 
     public boolean add(Part part) {
+        if (name == "" || description == "" || price == "")
+            return false;
         return objectEntityDAO.addObject(this, part);
     }
 }

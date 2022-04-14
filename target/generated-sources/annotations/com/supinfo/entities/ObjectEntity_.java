@@ -13,6 +13,7 @@ public abstract class ObjectEntity_ {
 	public static volatile SingularAttribute<ObjectEntity, String> name;
 	public static volatile SingularAttribute<ObjectEntity, String> description;
 	public static volatile SingularAttribute<ObjectEntity, Integer> id;
+	public static volatile SingularAttribute<ObjectEntity, Integer> userId;
 
 }
 

@@ -17,6 +17,9 @@ public class ObjectEntity {
     @Column(name = "id")
     private int id;
     @Basic
+    @Column(name = "user_id")
+    private int userId;
+    @Basic
     @Column(name = "name")
     private String name;
     @Basic
@@ -37,6 +40,7 @@ public class ObjectEntity {
         ObjectEntity that = (ObjectEntity) o;
 
         if (id != that.id) return false;
+        if (userId != that.userId) return false;
         if (price != that.price) return false;
         if (!Objects.equals(name, that.name)) return false;
         if (!Objects.equals(description, that.description)) return false;
@@ -48,6 +52,7 @@ public class ObjectEntity {
     @Override
     public int hashCode() {
         int result = id;
+        result = 31 * result + userId;
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (description != null ? description.hashCode() : 0);
         result = 31 * result + price;

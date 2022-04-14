@@ -1,9 +1,14 @@
 package com.supinfo.entities;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
+@Getter
+@Setter
 @Table(name = "user", schema = "barter_trade")
 public class UserEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
