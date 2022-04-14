@@ -5,13 +5,11 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <div class="header">
-            <a href="index.jsp">
-                <div class="logotwo">
-                    <img src="image/logo.png" alt="test" width = "300">
-                </div>
-            </a><br>
-        </div>
+        <a href="index.jsp">
+            <div class="logotwo">
+                <img src="image/logo.png" alt="test" width = "300">
+            </div>
+        </a><br>
         <div class="allinfo">
             <div class="info">
                 <img width="300px" src="data:image/jpeg;base64, <%= request.getAttribute("encode") %>"/>

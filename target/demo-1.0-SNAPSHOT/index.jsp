@@ -67,7 +67,7 @@
         <div class=presentation>
             <img id=ban src="image/echange.jpg" alt="banniere">
             <div class=sous-titre>
-                <h2>Le site pour faire de bonnes affaires ! ( ou pas... )</h2>
+                <h2>LE site pour faire de bonnes affaires ! ( ou pas... )</h2>
             </div>
         </div>
 

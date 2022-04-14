@@ -88,14 +88,15 @@ header {
 
     @keyframes soustitre {
         0% {
-            transform: translate(-90%, -50%);
+            transform: translate(-300%, -50%);
             opacity: 0;
-        }    
+        }
         100% {
             transform: translate(-50%, -50%);
             opacity: 1;
         }
     }
+
 /*----------------------------------------------*/
 /* STATISTIQUES */
     .stats{
